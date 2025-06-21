@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="zxx">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mently</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="//unpkg.com/alpinejs" defer=""></script>
+        <link rel="icon" type="image/x-icon" href="./imgs/favico.png" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .inter {
+                font-family: "Inter", serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+        </style>
+    </head>
+
+    <body class="inter antialiased bg-[#0d0e11]">
+        <header class="px-8 py-4 bg-[#0d0e11] border-b border-gray-800">
+            <div
+                class="flex items-center text-white justify-between mx-auto w-full max-w-7xl"
+            >
+                <a href="/" class="flex items-center gap-2">
+                    <img src="./imgs/favico.png" class="w-12" />
+                    <span>Mently</span>
+                </a>
+                <nav class="hidden md:flex text-sm gap-8">
+                    <a href="/" class="underline">Home</a>
+                    <a href="#mentors" class="hover:underline">Mentors</a>
+                    <a href="#services" class="hover:underline">Services</a>
+                    <a href="#faqs" class="hover:underline">FAQs</a>
+                </nav>
+                <a href="#contact" class="text-sm py-1 px-4 border rounded-xl">
+                    Contact
+                </a>
+            </div>
+        </header>
+        <section
+            class="px-8 py-20 bg-[#0d0e11] relative items-center overflow-hidden max-h-[900px]"
+        >
+            <div
+                class="flex flex-col gap-6 items-center text-white mx-auto w-full max-w-5xl"
+            >
+                <!-- <div class="flex gap-4 items-center">
+                    <div class="flex gap-1">
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                    </div>
+                    <span class="text-xs text-gray-400">
+                        4.8/5 (45k reviews)
+                    </span>
+                </div> -->
+                <h1 class="text-8xl font-semibold tracking-tighter text-center">
+                    No Course Sellers, <br />
+                    Just Mentors.
+                </h1>
+                <strong class="font-normal text-xl text-center">
+                    More than a course — a live, personalized learning
+                    experience
+                </strong>
+                <form
+                    action="index.php"
+                    method="post"
+                    class="flex gap-4 items-center"
+                >
+                    <a
+                        href="#"
+                        class="inline-block bg-[#cff245] text-black px-6 py-2 rounded-xl text-center font-medium hover:bg-[#bde132] transition"
+                    >
+                        Fill out this form to know more about your requirements
+                    </a>
+                </form>
+                <div class="mt-20">
+                    <img
+                        src="./imgs/hero-black.png"
+                        class="mx-auto w-full max-w-[1000px] rounded shadow-2xl"
+                        alt=""
+                    />
+                </div>
+            </div>
+        </section>
+        <section id="mentors" class="px-8 py-20 bg-[#f6f7fa] rounded-3xl">
+            <div
+                class="flex flex-col gap-16 items-center mx-auto w-full max-w-5xl"
+            >
+                <h2 class="text-5xl font-semibold tracking-tighter text-center">
+                    Meet Our Amazing Mentors
+                </h2>
+                <div class="flex flex-col md:grid grid-cols-2 gap-4">
+                    <div
+                        class="col-span-1 flex flex-col gap-4 items-left bg-white rounded-3xl px-8 pb-8"
+                    >
+                        <img
+                            src="./imgs/teachers/first.jpg"
+                            class="w-full md:w-full md:max-w-none rounded-2xl mb-6"
+                            alt=""
+                        />
+                        <h3 class="text-xl font-bold">Katherine</h3>
+                        <p class="text-sm text-gray-600">
+                            Quo laboriosam quas saepe sunt alias delectus
+                            ducimus quidem natus, suscipit id aliquid
+                            consectetur. Voluptate officiis iusto rem.
+                        </p>
+                        <!-- Social links -->
+                        <div class="flex gap-4 mt-2">
+                            <a
+                                href="https://twitter.com"
+                                class="hover:text-blue-500"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a
+                                href="https://github.com"
+                                class="hover:text-gray-800"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a
+                                href="https://linkedin.com"
+                                class="hover:text-blue-700"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class="col-span-1 flex flex-col gap-4 items-left bg-white rounded-3xl px-8 pb-8"
+                    >
+                        <img
+                            src="./imgs/teachers/second.jpg"
+                            class="w-full md:w-full md:max-w-none rounded-2xl mb-6"
+                            alt=""
+                        />
+                        <h3 class="text-xl font-bold">Ahmed</h3>
+                        <p class="text-sm text-gray-600">
+                            Quo laboriosam quas saepe sunt alias delectus
+                            ducimus quidem natus, suscipit id aliquid
+                            consectetur. Voluptate officiis iusto rem.
+                        </p>
+                        <!-- Social links -->
+                        <div class="flex gap-4 mt-2">
+                            <a
+                                href="https://twitter.com"
+                                class="hover:text-blue-500"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a
+                                href="https://github.com"
+                                class="hover:text-gray-800"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a
+                                href="https://linkedin.com"
+                                class="hover:text-blue-700"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class="col-span-1 flex flex-col gap-4 items-left bg-white rounded-3xl px-8 pb-8"
+                    >
+                        <img
+                            src="./imgs/teachers/third.jpg"
+                            class="w-full md:w-full md:max-w-none rounded-2xl mb-6"
+                            alt=""
+                        />
+                        <h3 class="text-xl font-bold">John</h3>
+                        <p class="text-sm text-gray-600">
+                            Quo laboriosam quas saepe sunt alias delectus
+                            ducimus quidem natus, suscipit id aliquid
+                            consectetur. Voluptate officiis iusto rem.
+                        </p>
+                        <!-- Social links -->
+                        <div class="flex gap-4 mt-2">
+                            <a
+                                href="https://twitter.com"
+                                class="hover:text-blue-500"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a
+                                href="https://github.com"
+                                class="hover:text-gray-800"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a
+                                href="https://linkedin.com"
+                                class="hover:text-blue-700"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class="col-span-1 flex flex-col gap-4 items-left bg-white rounded-3xl px-8 pb-8"
+                    >
+                        <img
+                            src="./imgs/teachers/fourth.jpg"
+                            class="w-full md:w-full md:max-w-none rounded-2xl mb-6"
+                            alt=""
+                        />
+                        <h3 class="text-xl font-bold">Lu Chin</h3>
+                        <p class="text-sm text-gray-600">
+                            Quo laboriosam quas saepe sunt alias delectus
+                            ducimus quidem natus, suscipit id aliquid
+                            consectetur. Voluptate officiis iusto rem.
+                        </p>
+                        <!-- Social links -->
+                        <div class="flex gap-4 mt-2">
+                            <a
+                                href="https://twitter.com"
+                                class="hover:text-blue-500"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a
+                                href="https://github.com"
+                                class="hover:text-gray-800"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a
+                                href="https://linkedin.com"
+                                class="hover:text-blue-700"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <div
+                        class="col-span-2 flex flex-col gap-4 items-center bg-white rounded-3xl p-10 md:p-20"
+                    >
+                        <h3 class="text-xl font-bold">Your data</h3>
+                        <p class="text-md text-gray-600 text-center">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Nisi rem et inventore doloribus laborum, quae
+                            obcaecati maiores consectetur quam. Dolores
+                            exercitationem repellat !
+                        </p>
+                        <a
+                            href=""
+                            class="bg-[#cff245] px-4 py-2 text-black rounded-xl"
+                        >
+                            Get Started
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <section id="services" class="px-8 py-20">
+            <div
+                class="flex flex-col gap-16 items-center mx-auto w-full max-w-3xl"
+            >
+                <h2
+                    class="text-5xl font-semibold tracking-tighter text-center text-white"
+                >
+                    Checkout<br />
+                    Our Services
+                </h2>
+                <div class="flex flex-wrap justify-center gap-2 w-full">
+                    <div
+                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white hover:bg-[#cff245] box-content"
+                    >
+                        <i class="bi bi-1-circle-fill text-4xl"></i>
+                        <span class="text-center font-bold">
+                            1:1 Mentorship
+                        </span>
+                    </div>
+                    <div
+                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white hover:bg-[#cff245] box-content"
+                    >
+                        <i class="bi bi-2-circle-fill text-4xl"></i>
+                        <span class="text-center font-bold">
+                            Guide to<br />Open Source
+                        </span>
+                    </div>
+                    <div
+                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-700 items-center bg-white hover:bg-[#cff245] box-content"
+                    >
+                        <i class="bi bi-3-circle-fill text-4xl"></i>
+                        <span class="text-center font-bold">
+                            Doubt Clearing<br />
+                            Sessions
+                        </span>
+                    </div>
+                    <div
+                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white hover:bg-[#cff245] box-content"
+                    >
+                        <i class="bi bi-4-circle-fill text-4xl"></i>
+                        <span class="text-center font-bold">
+                            In Depth<br />
+                            Topic Sessions
+                        </span>
+                    </div>
+                    <!-- <div
+                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white box-content"
+                    >
+                        <i class="bi bi-5-circle-fill text-4xl"></i>
+                        <span class="text-center font-bold">
+                            Lost<br />
+                            paper
+                        </span>
+                    </div>
+                    <div
+                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white box-content"
+                    >
+                        <i class="bi bi-6-circle-fill text-4xl"></i>
+                        <span class="text-center font-bold">
+                            Our best<br />
+                            Places
+                        </span>
+                    </div>
+                    <div
+                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white box-content"
+                    >
+                        <i class="bi bi-7-circle-fill text-4xl"></i>
+                        <span class="text-center font-bold">
+                            Our best<br />
+                            Places
+                        </span>
+                    </div>
+                    <div
+                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white box-content"
+                    >
+                        <i class="bi bi-8-circle-fill text-4xl"></i>
+                        <span class="text-center font-bold">
+                            Our best<br />
+                            Places
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <!-- <section class="px-8 py-20 bg-[#f6f7fa] rounded-3xl">
+            <div class="h-full mx-auto max-w-5xl">
+                <div
+                    class="mx-auto max-w-5xl flex flex-col lg:flex-row gap-10 justify-between w-full"
+                >
+                    <div
+                        class="max-w-[200px] text-sm text-gray-400 mx-auto lg:ms-0"
+                    >
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit.
+                    </div>
+                    <ul
+                        class="flex flex-row gap-5 justify-center flex-wrap items-center"
+                    >
+                        <li>
+                            <img
+                                class="grayscale max-w-[100px]"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"
+                                alt=""
+                            />
+                        </li>
+                        <li>
+                            <img
+                                class="grayscale max-w-[100px]"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Coinbase.svg/2560px-Coinbase.svg.png"
+                                alt=""
+                            />
+                        </li>
+                        <li>
+                            <img
+                                class="grayscale max-w-[100px]"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png"
+                                alt=""
+                            />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="px-8 py-20">
+            <div class="h-full mx-auto max-w-5xl">
+                <div
+                    class="mx-auto max-w-7xl px-4l lg:text-center sm:px-6 lg:px-8 pb-10"
+                >
+                    <div class="max-w-3xl mx-auto lg:max-w-none">
+                        <h2
+                            class="text-5xl font-semibold tracking-tighter text-white text-center"
+                        >
+                            Level up your
+                            <span class="lg:block">development experience</span>
+                        </h2>
+                    </div>
+                </div>
+                <div
+                    class="items-start gap-2 mx-auto items-center mt-12 flex flex-col lg:grid lg:grid-cols-3"
+                >
+                    <div
+                        class="flex flex-col justify-between h-full p-8 bg-gray-50 rounded-3xl"
+                    >
+                        <div class="flex flex-col">
+                            <div>
+                                <h3 class="mt-4 font-medium text-gray-900">
+                                    SendIt Monthly License
+                                </h3>
+                            </div>
+                            <div class="order-first text-2xl font-medium">
+                                $10 <span>/month</span>
+                            </div>
+                            <p class="mt-2 text-xs italic">
+                                Excluding local taxes or VAT if applicable.
+                            </p>
+                            <ul
+                                class="flex flex-col gap-2 mt-12 text-sm text-gray-600"
+                            >
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>Boost your productivity with SendIt</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Available for Google Chrome and Chromium
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>License for 3 devices</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Permanent access to the SendIt community
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8">
+                            <button
+                                class="flex items-center justify-center w-full h-10 px-4 py-2 text-sm font-semibold text-gray-600 transition-all bg-white border border-gray-300 rounded-lg"
+                            >
+                                Get started
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col text-black justify-between h-full p-8 bg-[#cff245] rounded-3xl"
+                    >
+                        <div class="flex flex-col">
+                            <div>
+                                <h3 class="mt-4 font-medium">
+                                    SendIt Yearly License
+                                </h3>
+                            </div>
+                            <div class="order-first text-2xl font-medium">
+                                $80 <span>/year</span>
+                            </div>
+                            <p class="mt-2 text-xs italic text-gray-700">
+                                Excluding local taxes or VAT if applicable.
+                            </p>
+                            <ul class="flex flex-col gap-2 mt-12 text-sm">
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>Save 50% - 6 months free</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>Boost your productivity with SendIt</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Available for Google Chrome and Chromium
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>License for 3 devices</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Permanent access to theSendIt community
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Get all updates and new features for one
+                                        year
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8">
+                            <button
+                                class="flex items-center justify-center w-full h-10 px-4 py-2 text-sm font-semibold transition-all bg-white border border-gray-300 rounded-lg text-gray-600"
+                            >
+                                Get started
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col justify-between h-full p-8 bg-gray-50 rounded-3xl"
+                    >
+                        <div class="flex flex-col">
+                            <div>
+                                <h3 class="mt-4 font-medium">
+                                    SendIt Perpetual License
+                                </h3>
+                            </div>
+                            <div class="order-first text-2xl font-medium">
+                                $199 <span>/one-time</span>
+                            </div>
+                            <p class="mt-2 text-xs italic text-gray-600">
+                                Excluding local taxes or VAT if applicable.
+                            </p>
+                            <ul
+                                class="flex flex-col gap-2 mt-12 text-sm text-gray-600"
+                            >
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>Pay once, use forever</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>Boost your productivity with SendIt</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Available for Google Chrome and Chromium
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>License for 3 devices</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        Permanent access to theSendIt community
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-circle-check-filled"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="2"
+                                            stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <path
+                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+                                                stroke-width="0"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <p>Get all updates and new features</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8">
+                            <button
+                                class="flex items-center justify-center w-full h-10 px-4 py-2 text-sm font-semibold text-gray-600 transition-all bg-white border border-gray-300 rounded-lg"
+                            >
+                                Get started
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <section id="faqs" class="py-20 bg-[#f6f7fa] rounded-3xl">
+            <div class="h-full max-w-5xl mx-auto">
+                <div class="flex flex-col gap-12">
+                    <div>
+                        <h2
+                            class="font-semibold tracking-tighter text-5xl text-center"
+                        >
+                            FAQs
+                        </h2>
+                        <p
+                            class="mx-auto mt-4 text-sm text-gray-600 text-center"
+                        >
+                            Frequent questions &amp; answers
+                        </p>
+                    </div>
+                    <div
+                        class="flex flex-col mx-auto max-w-2xl gap-6 text-base text-gray-400 w-full px-4"
+                    >
+                        <details>
+                            <summary
+                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
+                            >
+                                What is Mently?
+                            </summary>
+                            <p class="pt-4 text-sm text-gray-500">
+                                Mently is a personalized learning platform that
+                                connects you directly with real mentors and
+                                authors. Instead of generic, pre-recorded
+                                courses, you get live guidance, ongoing updates,
+                                and tailored advice — so you can grow faster and
+                                more confidently.
+                            </p>
+                        </details>
+                        <details>
+                            <summary
+                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
+                            >
+                                How does Mently work?
+                            </summary>
+                            <p class="pt-4 text-sm text-gray-500">
+                                Right now, Mently is launching as a landing page
+                                and you do two things here:
+                            </p>
+                            <p class="pt-4 text-sm text-gray-500">
+                                Fill out a short form above to let us know which
+                                creator or mentor you’d like guidance from.
+                            </p>
+                            <p class="pt-4 text-sm text-gray-500">
+                                Subscribe to our newsletter to receive updates,
+                                advice, and valuable insights about the
+                                mentoring process. Once we’re live, we’ll
+                                personally connect you with experienced mentors
+                                and keep you informed every step of the way.
+                            </p>
+                        </details>
+                        <details>
+                            <summary
+                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
+                            >
+                                How do I get mentored by a mentor?
+                            </summary>
+                            <p class="pt-4 text-sm text-gray-500">
+                                You simply fill out the mentoring form above.
+                                Once we receive your interest, we’ll connect you
+                                directly with the our mentor mentor so you can
+                                arrange personalized sessions that fit your
+                                goals.
+                            </p>
+                        </details>
+                        <details>
+                            <summary
+                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
+                            >
+                                What will I get after subscribing to the
+                                Newsletter?
+                            </summary>
+                            <p class="pt-4 text-sm text-gray-500">
+                                By subscribing, you’ll receive regular updates
+                                and insider information about our progress, new
+                                mentors joining the platform, and practical
+                                learning advice — straight to your inbox.
+                            </p>
+                        </details>
+                        <details>
+                            <summary
+                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
+                            >
+                                How much does it cost?
+                            </summary>
+                            <p class="pt-4 text-sm text-gray-500">
+                                The cost depends on the mentor or author you
+                                choose. Every mentor sets their own pricing
+                                based on their expertise and the service they
+                                offer — so you’ll always know upfront what to
+                                expect.
+                            </p>
+                        </details>
+                        <details>
+                            <summary
+                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
+                            >
+                                When will the full platform be ready?
+                            </summary>
+                            <p class="pt-4 text-sm text-gray-500">
+                                Our platform is in its early stages. Right now,
+                                we’re collecting interest and building the core
+                                product. Subscribers will be the first to know
+                                when we officially launch — and will also
+                                receive exclusive early access and discounts!
+                            </p>
+                        </details>
+                        <details>
+                            <summary
+                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
+                            >
+                                What kind of mentors will I find on Mently?
+                            </summary>
+                            <p class="pt-4 text-sm text-gray-500">
+                                Our mentors come from all kinds of backgrounds —
+                                from authors and tech experts to designers,
+                                educators, and entrepreneurs. But for now, we
+                                are in early stage, so we are limiting it to
+                                tech.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer id="contact" class="px-8 py-20 bg-black text-white">
+            <div
+                class="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
+                <!-- First column: Name + logo -->
+                <div>
+                    <div class="inline-flex items-center gap-3">
+                        <!-- Example logo — replace with your real image or icon -->
+                        <img
+                            src="./imgs/favico.png"
+                            alt="Mently Logo"
+                            class="w-12 h-12"
+                        />
+                        <p class="text-2xl font-bold uppercase">Mently</p>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-400">
+                        Personalized mentorship for your growth journey.
+                    </p>
+                </div>
+
+                <!-- Second column: Social links -->
+                <div class="flex flex-col items-start">
+                    <p class="font-semibold mb-2">Follow us</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-blue-400">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="hover:text-gray-300">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="hover:text-blue-600">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                    <br />
+                    <p class="text-sm text-gray-400">help@mently.cc</p>
+                </div>
+
+                <!-- Third column: Newsletter form -->
+                <div>
+                    <p class="font-semibold mb-2">
+                        Subscribe to our newsletter
+                    </p>
+                    <form class="flex flex-col gap-2">
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            class="px-3 py-2 rounded-md text-black"
+                        />
+                        <button
+                            type="submit"
+                            class="bg-[#cff245] text-black px-3 py-2 rounded-md hover:bg-[#bde132] transition"
+                        >
+                            Subscribe
+                        </button>
+                    </form>
+                    <br />
+                    <small class="text-xs text-center">
+                        By clicking subscribe you're confirming that you agree
+                        with our
+                        <a href="#" class="underline">Terms and Conditions</a>.
+                    </small>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center text-xs text-gray-500">
+                © Mently. All rights reserved.
+            </div>
+        </footer>
+    </body>
+</html>

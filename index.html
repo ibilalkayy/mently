@@ -1,1204 +1,1875 @@
-<!doctype html>
-<html lang="zxx">
+<html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Mently</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="//unpkg.com/alpinejs" defer=""></script>
-        <link rel="icon" type="image/x-icon" href="./imgs/favico.png" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&amp;display=swap"
             rel="stylesheet"
         />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/tailwind/tailwind.min.css" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="assets/images/favicon.png"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"
+            defer="defer"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
+        <script src="assets/mentors.js"></script>
+        <script>
+            // mentorsData is now available
+            document.addEventListener("DOMContentLoaded", () => {
+                navigateMentor(0); // Use mentorsData here
+            });
+        </script>
         <style>
-            .inter {
-                font-family: "Inter", serif;
-                font-weight: 400;
-                font-style: normal;
+            html {
+                scroll-behavior: smooth;
+            }
+            .mentor-services-list {
+                list-style: disc !important;
+                padding-left: 2rem !important;
+            }
+            .mentor-card {
+                transition:
+                    transform 0.3s ease-in-out,
+                    box-shadow 0.3s ease-in-out,
+                    opacity 0.5s ease-in;
+                opacity: 0;
+                animation: fadeIn 0.5s forwards;
+
+                /* Always apply hover styles by default */
+                transform: translateY(-12px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                }
+            }
+
+            /* Keep hover glow effect ONLY on image */
+            .mentor-image {
+                width: 140px;
+                height: 140px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 5px solid #fff;
+                box-shadow: 0 0 15px rgba(79, 70, 229, 0.5); /* Subtle glow effect */
+                transition: box-shadow 0.3s ease-in-out;
+            }
+
+            .mentor-image:hover {
+                box-shadow: 0 0 25px rgba(79, 70, 229, 0.8); /* Enhanced glow on hover */
+            }
+
+            .gradient-text {
+                background: linear-gradient(90deg, #4f46e5, #7c3aed);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            /* Accessibility: disable animation if user prefers reduced motion */
+            @media (prefers-reduced-motion: reduce) {
+                .mentor-card,
+                .mentor-image {
+                    transition: none;
+                    animation: none;
+                }
+            }
+
+            .social-links-container a {
+                margin-right: 1.5rem !important; /* Fallback for space-x-10 */
+            }
+            .social-links-container a:last-child {
+                margin-right: 0 !important;
             }
         </style>
     </head>
+    <body class="antialiased bg-body text-body font-body">
+        <div>
+            <section
+                class="relative bg-yellowGray-50 overflow-hidden"
+                x-data="{ mobileNavOpen: false }"
+            >
+                <nav class="relative z-10 bg-white">
+                    <div class="flex px-4 md:px-12 py-6 items-center">
+                        <button
+                            class="flex w-14 h-14 mr-12 items-center justify-center border border-gray-50 hover:border-gray-500 transform hover:rotate-45 rounded-full transition duration-300"
+                            x-on:click="mobileNavOpen = !mobileNavOpen"
+                        >
+                            <svg
+                                width="32"
+                                height="12"
+                                viewbox="0 0 32 12"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <rect width="32" height="2" fill="black"></rect>
+                                <rect
+                                    y="10"
+                                    width="19"
+                                    height="2"
+                                    fill="black"
+                                ></rect>
+                            </svg></button
+                        ><a
+                            class="inline-block text-2xl font-bold"
+                            href="index.html"
+                        >
+                            <img
+                                src="assets/images/logo.png"
+                                alt="Logo"
+                                style="width: 130px"
+                            />
+                        </a>
 
-    <body class="inter antialiased bg-[#0d0e11]">
-        <header class="px-8 py-4 bg-[#0d0e11] border-b border-gray-800">
-            <div
-                class="flex items-center text-white justify-between mx-auto w-full max-w-7xl"
-            >
-                <a href="/" class="flex items-center gap-2">
-                    <img src="./imgs/favico.png" class="w-12" />
-                    <span>Mently</span>
-                </a>
-                <nav class="hidden md:flex text-sm gap-8">
-                    <a href="/" class="underline">Home</a>
-                    <a href="#mentors" class="hover:underline">Mentors</a>
-                    <a href="#services" class="hover:underline">Services</a>
-                    <a href="#faqs" class="hover:underline">FAQs</a>
-                </nav>
-                <a
-                    href="https://discord.gg/VGF9UES5"
-                    target="_blank"
-                    class="text-sm py-1 px-4 border rounded-xl"
-                >
-                    Join Discord
-                </a>
-            </div>
-        </header>
-        <section
-            class="px-8 py-20 bg-[#0d0e11] relative items-center overflow-hidden max-h-[900px]"
-        >
-            <div
-                class="flex flex-col gap-6 items-center text-white mx-auto w-full max-w-5xl"
-            >
-                <!-- <div class="flex gap-4 items-center">
-                    <div class="flex gap-1">
-                        <i class="bi bi-star-fill text-yellow-400"></i>
-                        <i class="bi bi-star-fill text-yellow-400"></i>
-                        <i class="bi bi-star-fill text-yellow-400"></i>
-                        <i class="bi bi-star-fill text-yellow-400"></i>
-                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <div
+                            class="hidden lg:flex items-center ml-auto removed"
+                        >
+                            <div class="mr-12">
+                                <ul class="hidden xl:flex items-center">
+                                    <li class="mr-16">
+                                        <a
+                                            href="#mentors-section"
+                                            class="inline-block text-base font-medium text-black"
+                                            >Mentors</a
+                                        >
+                                    </li>
+                                    <li class="mr-16">
+                                        <a
+                                            href="#faqs-section"
+                                            class="inline-block text-base font-medium text-black"
+                                            >FAQs</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="#contact-section"
+                                            class="inline-block text-base font-medium text-black"
+                                            >Contact</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="w-px h-12 mx-8 bg-gray-50"></div>
+                            <a
+                                class="relative group inline-flex h-12 px-8 items-center justify-center font-semibold rounded-lg border border-black overflow-hidden"
+                                href="https://tally.so/r/nrQVA2"
+                                target="_blank"
+                            >
+                                <span
+                                    class="relative z-10 text-black group-hover:text-white transition duration-500"
+                                >
+                                    Become a Mentor
+                                </span>
+                                <div
+                                    class="absolute top-0 left-0 h-full w-full transform -translate-x-full group-hover:translate-x-0 bg-black transition duration-500 ease-linear rounded-lg"
+                                ></div>
+                            </a>
+                        </div>
                     </div>
-                    <span class="text-xs text-gray-400">
-                        4.8/5 (45k reviews)
-                    </span>
-                </div> -->
-                <h1 class="text-8xl font-semibold tracking-tighter text-center">
-                    No Course Sellers, <br />
-                    Just Mentors.
-                </h1>
-                <strong class="font-normal text-xl text-center">
-                    More than a course — a live, personalized learning
-                    experience
-                </strong>
-                <a
-                    href="https://tally.so/r/nGa4DZ"
-                    target="_blank"
-                    class="inline-block bg-[#cff245] text-black px-6 py-2 rounded-xl text-center font-medium hover:bg-[#bde132] transition"
-                >
-                    Fill this form to let us know about your requirements
-                </a>
-                <div class="mt-20">
+                </nav>
+                <div class="relative pt-28 2xl:pt-60 lg:pb-32">
                     <img
-                        src="./imgs/hero-black.png"
-                        class="mx-auto w-full max-w-[1000px] rounded shadow-2xl"
+                        class="hidden lg:block absolute top-0 right-0 h-full"
+                        src="assets/images/helping-hand.jpg"
+                        width="650"
+                        alt=""
+                    />
+                    <div class="container px-4 mx-auto">
+                        <div class="relative">
+                            <div class="max-w-lg mx-auto lg:mx-0">
+                                <div class="inline-flex items-center mb-8">
+                                    <span class="inline-block mr-6">
+                                        <svg
+                                            width="32"
+                                            height="32"
+                                            viewbox="0 0 32 32"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <rect
+                                                width="32"
+                                                height="32"
+                                                rx="16"
+                                                fill="#7781EE"
+                                            ></rect>
+                                            <rect
+                                                x="22.9492"
+                                                y="9.63605"
+                                                width="2"
+                                                height="16"
+                                                rx="1"
+                                                transform="rotate(45 22.9492 9.63605)"
+                                                fill="white"
+                                            ></rect>
+                                            <rect
+                                                x="7.62891"
+                                                y="17.0431"
+                                                width="2"
+                                                height="7.57417"
+                                                rx="1"
+                                                transform="rotate(-45 7.62891 17.0431)"
+                                                fill="white"
+                                            ></rect></svg
+                                    ></span>
+                                    <span
+                                        class="uppercase text-2xl text-gray-900 font-medium"
+                                        >No Course Sellers</span
+                                    >
+                                </div>
+                                <h1
+                                    class="text-7xl sm:text-8xl sm:text-10xl 2xl:text-12xl font-heading mb-18"
+                                >
+                                    <span>Just</span>
+                                    <div class="inline-block pr-12 relative">
+                                        <span class="relative z-10"
+                                            >mentors.</span
+                                        ><img
+                                            class="absolute top-0 left-0 w-full 2xl:mt-6 -ml-4 2xl:-ml-10"
+                                            src="assets/images/green-circle-bg-text.svg"
+                                            alt=""
+                                        />
+                                    </div>
+                                </h1>
+                                <p class="text-xl mb-18">
+                                    Get mentored from people, not AI
+                                </p>
+                                <a
+                                    class="group relative inline-block h-16 w-full sm:w-40 bg-blueGray-900 rounded"
+                                    href="#mentors-section"
+                                >
+                                    <div
+                                        class="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300"
+                                    >
+                                        <div
+                                            class="flex h-full w-full items-center justify-center bg-white border-2 border-blueGray-900 rounded"
+                                        >
+                                            <span
+                                                class="text-base font-semibold uppercase"
+                                                >Get Started</span
+                                            >
+                                        </div>
+                                    </div></a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <img
+                        class="block lg:hidden pl-10 md:pl-40 mt-16 md:mt-32"
+                        src="assets/images/helping-hand.jpg"
                         alt=""
                     />
                 </div>
-            </div>
-        </section>
-        <section id="mentors" class="px-8 py-20 bg-[#f6f7fa] rounded-3xl">
-            <div
-                class="flex flex-col gap-16 items-center mx-auto w-full max-w-5xl"
+                <div
+                    class="hidden fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50"
+                    :class="{'block': mobileNavOpen, 'hidden': !mobileNavOpen}"
+                >
+                    <div
+                        class="fixed inset-0 backdrop-blur-xl backdrop-filter bg-gray-900 bg-opacity-80"
+                        x-on:click="mobileNavOpen = !mobileNavOpen"
+                    ></div>
+                    <nav
+                        class="relative pt-8 pb-8 bg-white h-full overflow-y-auto"
+                    >
+                        <div class="flex flex-col px-6 h-full">
+                            <a
+                                class="inline-block text-2xl font-bold ml-8 mb-16"
+                                href="index.html"
+                                ><img
+                                    src="assets/images/logo.png"
+                                    style="width: 130px"
+                                    alt=""
+                            /></a>
+                            <ul class="w-full mb-auto pb-16">
+                                <li class="mb-6">
+                                    <a
+                                        class="inline-block text-base font-medium text-black"
+                                        href="#mentors-section"
+                                        >Mentors</a
+                                    >
+                                </li>
+                                <li class="mb-6">
+                                    <a
+                                        class="inline-block text-base font-medium text-black"
+                                        href="#faqs-section"
+                                        >FAQs</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="inline-block text-base font-medium text-black"
+                                        href="#contact-section"
+                                        >Contact</a
+                                    >
+                                </li>
+                            </ul>
+                            <div class="w-full">
+                                <a
+                                    class="relative group inline-flex h-12 w-full mb-4 items-center justify-center font-semibold rounded-lg bg-white border border-black"
+                                    href="https://tally.so/r/nrQVA2"
+                                    target="_blank"
+                                    ><span class="text-black"
+                                        >Become a Mentor</span
+                                    ></a
+                                >
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </section>
+            <section
+                id="features-section"
+                class="pt-20 md:pt-40 bg-gray-900 overflow-hidden"
             >
-                <h2 class="text-5xl font-semibold tracking-tighter text-center">
-                    Meet Our Amazing Mentors (Coming Soon!)
-                </h2>
-                <div class="flex flex-col md:grid grid-cols-2 gap-4">
-                    <div
-                        class="col-span-1 flex flex-col gap-4 items-left bg-white rounded-3xl px-8 pb-8"
-                    >
-                        <img
-                            src="./imgs/teachers/first.jpg"
-                            class="w-full md:w-full md:max-w-none rounded-2xl mb-6"
-                            alt=""
-                        />
-                        <h3 class="text-xl font-bold">Katherine</h3>
-                        <p class="text-sm text-gray-600">
-                            Quo laboriosam quas saepe sunt alias delectus
-                            ducimus quidem natus, suscipit id aliquid
-                            consectetur. Voluptate officiis iusto rem.
-                        </p>
-                        <!-- Social links -->
-                        <div class="flex gap-4 mt-2">
-                            <a
-                                href="https://twitter.com"
-                                class="hover:text-blue-500"
-                                target="_blank"
-                                rel="noopener"
+                <div class="container px-4 mx-auto mb-20 sm:mb-32">
+                    <div class="text-center mb-24 md:mb-32">
+                        <div class="inline-flex items-center mb-8">
+                            <span
+                                class="block w-2 h-2 mr-2 rounded-full bg-blue-500"
+                            ></span>
+                            <span
+                                class="uppercase text-lg text-gray-200 font-medium"
+                                >FEATURES</span
                             >
-                                <i class="fab fa-twitter text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://github.com"
-                                class="hover:text-gray-800"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-github text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://linkedin.com"
-                                class="hover:text-blue-700"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-linkedin text-2xl"></i>
-                            </a>
                         </div>
-                    </div>
-                    <div
-                        class="col-span-1 flex flex-col gap-4 items-left bg-white rounded-3xl px-8 pb-8"
-                    >
-                        <img
-                            src="./imgs/teachers/second.jpg"
-                            class="w-full md:w-full md:max-w-none rounded-2xl mb-6"
-                            alt=""
-                        />
-                        <h3 class="text-xl font-bold">Ahmed</h3>
-                        <p class="text-sm text-gray-600">
-                            Quo laboriosam quas saepe sunt alias delectus
-                            ducimus quidem natus, suscipit id aliquid
-                            consectetur. Voluptate officiis iusto rem.
-                        </p>
-                        <!-- Social links -->
-                        <div class="flex gap-4 mt-2">
-                            <a
-                                href="https://twitter.com"
-                                class="hover:text-blue-500"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-twitter text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://github.com"
-                                class="hover:text-gray-800"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-github text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://linkedin.com"
-                                class="hover:text-blue-700"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-linkedin text-2xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div
-                        class="col-span-1 flex flex-col gap-4 items-left bg-white rounded-3xl px-8 pb-8"
-                    >
-                        <img
-                            src="./imgs/teachers/third.jpg"
-                            class="w-full md:w-full md:max-w-none rounded-2xl mb-6"
-                            alt=""
-                        />
-                        <h3 class="text-xl font-bold">John</h3>
-                        <p class="text-sm text-gray-600">
-                            Quo laboriosam quas saepe sunt alias delectus
-                            ducimus quidem natus, suscipit id aliquid
-                            consectetur. Voluptate officiis iusto rem.
-                        </p>
-                        <!-- Social links -->
-                        <div class="flex gap-4 mt-2">
-                            <a
-                                href="https://twitter.com"
-                                class="hover:text-blue-500"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-twitter text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://github.com"
-                                class="hover:text-gray-800"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-github text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://linkedin.com"
-                                class="hover:text-blue-700"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-linkedin text-2xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div
-                        class="col-span-1 flex flex-col gap-4 items-left bg-white rounded-3xl px-8 pb-8"
-                    >
-                        <img
-                            src="./imgs/teachers/fourth.jpg"
-                            class="w-full md:w-full md:max-w-none rounded-2xl mb-6"
-                            alt=""
-                        />
-                        <h3 class="text-xl font-bold">Lu Chin</h3>
-                        <p class="text-sm text-gray-600">
-                            Quo laboriosam quas saepe sunt alias delectus
-                            ducimus quidem natus, suscipit id aliquid
-                            consectetur. Voluptate officiis iusto rem.
-                        </p>
-                        <!-- Social links -->
-                        <div class="flex gap-4 mt-2">
-                            <a
-                                href="https://twitter.com"
-                                class="hover:text-blue-500"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-twitter text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://github.com"
-                                class="hover:text-gray-800"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-github text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://linkedin.com"
-                                class="hover:text-blue-700"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <i class="fab fa-linkedin text-2xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- <div
-                        class="col-span-2 flex flex-col gap-4 items-center bg-white rounded-3xl p-10 md:p-20"
-                    >
-                        <h3 class="text-xl font-bold">Your data</h3>
-                        <p class="text-md text-gray-600 text-center">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Nisi rem et inventore doloribus laborum, quae
-                            obcaecati maiores consectetur quam. Dolores
-                            exercitationem repellat !
-                        </p>
-                        <a
-                            href=""
-                            class="bg-[#cff245] px-4 py-2 text-black rounded-xl"
+                        <h1
+                            class="text-5xl sm:text-7xl md:text-8xl font-heading font-semibold text-white"
                         >
-                            Get Started
-                        </a>
-                    </div> -->
+                            Get mentored every day
+                        </h1>
+                    </div>
+                    <div
+                        class="flex flex-wrap items-center xl:items-start -mx-4"
+                    >
+                        <div
+                            class="w-full lg:w-1/3 xl:w-1/4 px-4 mb-20 lg:mb-0"
+                        >
+                            <div class="max-w-sm mx-auto">
+                                <div class="flex mb-24">
+                                    <span
+                                        class="flex-shrink-0 inline-block mt-4 mr-8 w-3 h-3 bg-yellow-500 rounded-full"
+                                    ></span>
+                                    <div>
+                                        <h4
+                                            class="font-heading text-3xl sm:text-4xl text-white font-semibold mb-8"
+                                        >
+                                            Real-time 1:1 mentorship
+                                        </h4>
+                                        <p class="text-gray-300">
+                                            Get direct, hands-on support from
+                                            experienced mentors
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <span
+                                        class="flex-shrink-0 inline-block mt-4 mr-8 w-3 h-3 bg-yellow-500 rounded-full"
+                                    ></span>
+                                    <div>
+                                        <h4
+                                            class="font-heading text-3xl sm:text-4xl text-white font-semibold mb-8"
+                                        >
+                                            No courses, just guidance
+                                        </h4>
+                                        <p class="text-gray-300">
+                                            Skip pre-recorded videos — learn
+                                            through real talk
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="w-full lg:w-1/3 xl:w-2/4 px-4 mb-20 lg:mb-0"
+                        >
+                            <div>
+                                <img
+                                    class="w-full max-w-md xl:max-w-lg mx-auto rounded-full"
+                                    src="assets/images/mentoring.jpg"
+                                    alt=""
+                                />
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-1/3 xl:w-1/4 px-4">
+                            <div class="max-w-sm mx-auto">
+                                <div class="flex mb-24">
+                                    <span
+                                        class="flex-shrink-0 inline-block mt-4 mr-8 w-3 h-3 bg-yellow-500 rounded-full"
+                                    ></span>
+                                    <div>
+                                        <h4
+                                            class="font-heading text-3xl sm:text-4xl text-white font-semibold mb-8"
+                                        >
+                                            Live code reviews & sessions
+                                        </h4>
+                                        <p class="text-gray-300">
+                                            Work through real problems, live,
+                                            with expert feedback
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <span
+                                        class="flex-shrink-0 inline-block mt-4 mr-8 w-3 h-3 bg-yellow-500 rounded-full"
+                                    ></span>
+                                    <div>
+                                        <h4
+                                            class="font-heading text-3xl sm:text-4xl text-white font-semibold mb-8"
+                                        >
+                                            Tailored learning, not generic
+                                        </h4>
+                                        <p class="text-gray-300">
+                                            Every session adapts to your goals,
+                                            pace, and challenges
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section id="services" class="px-8 py-20">
-            <div
-                class="flex flex-col gap-16 items-center mx-auto w-full max-w-3xl"
+                <div class="relative pt-16 pb-18">
+                    <div class="container px-4 mx-auto">
+                        <img
+                            class="absolute top-0 left-0 h-full w-full object-cover lg:object-fill"
+                            src="assets/images/circles-bottom.svg"
+                            alt=""
+                        />
+                        <div
+                            class="animate-moving relative flex items-center justify-between"
+                        >
+                            <span
+                                class="relative flex-shrink-0 inline-block mr-8 md:mr-20 lg:mr-40 uppercase text-sm font-medium"
+                                ><span
+                                    class="absolute top-0 left-0 text-gray-200"
+                                    >Real Support</span
+                                >
+                                <span
+                                    class="bg-clip-text bg-gradient-to-br from-indigo-800 to-gray-200 text-transparent relative z-10 animate-pulse"
+                                    >Real Support</span
+                                ></span
+                            >
+                            <span
+                                class="relative flex-shrink-0 inline-block mr-8 md:mr-20 lg:mr-40 uppercase text-sm font-medium"
+                                ><span
+                                    class="absolute top-0 left-0 text-gray-200"
+                                    >Mentorship platform</span
+                                >
+                                <span
+                                    class="bg-clip-text bg-gradient-to-br from-indigo-800 to-gray-200 text-transparent relative z-10 animate-pulse"
+                                    >Mentorship platform</span
+                                ></span
+                            >
+                            <span
+                                class="relative flex-shrink-0 inline-block mr-8 md:mr-20 lg:mr-40 uppercase text-sm font-medium"
+                                ><span
+                                    class="absolute top-0 left-0 text-gray-200"
+                                    >Pair programming</span
+                                >
+                                <span
+                                    class="bg-clip-text bg-gradient-to-br from-indigo-800 to-gray-200 text-transparent relative z-10 animate-pulse"
+                                    >Pair programming</span
+                                ></span
+                            >
+                            <span
+                                class="relative flex-shrink-0 inline-block mr-8 md:mr-20 lg:mr-40 uppercase text-sm font-medium"
+                                ><span
+                                    class="absolute top-0 left-0 text-gray-200"
+                                    >No traditional courses</span
+                                >
+                                <span
+                                    class="bg-clip-text bg-gradient-to-br from-indigo-800 to-gray-200 text-transparent relative z-10 animate-pulse"
+                                    >No traditional courses</span
+                                ></span
+                            >
+                            <span
+                                class="relative flex-shrink-0 inline-block mr-8 md:mr-20 lg:mr-40 uppercase text-sm font-medium"
+                                ><span
+                                    class="absolute top-0 left-0 text-gray-200"
+                                    >Live coding help</span
+                                >
+                                <span
+                                    class="bg-clip-text bg-gradient-to-br from-indigo-800 to-gray-200 text-transparent relative z-10 animate-pulse"
+                                    >Live coding help</span
+                                ></span
+                            >
+                            <span
+                                class="relative flex-shrink-0 inline-block uppercase text-sm font-medium"
+                                ><span
+                                    class="absolute top-0 left-0 text-gray-200"
+                                    >MORE and more and more</span
+                                >
+                                <span
+                                    class="bg-clip-text bg-gradient-to-br from-indigo-800 to-gray-200 text-transparent relative z-10 animate-pulse"
+                                    >MORE and more and more</span
+                                ></span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="mentors-section" class="py-20 md:py-40 bg-yellow-100">
+                <div class="container px-4 mx-auto">
+                    <div class="max-w-4xl mx-auto text-center mb-20">
+                        <h1
+                            class="text-6xl sm:text-7xl md:text-8xl font-heading font-semibold mb-12"
+                        >
+                            Meet our Amazing Mentors
+                        </h1>
+                        <p class="text-2xl">
+                            Take personalized guidance from them.
+                        </p>
+                    </div>
+
+                    <div id="mentor-carousel">
+                        <!-- Mentor cards will be dynamically inserted here -->
+                    </div>
+                </div>
+            </section>
+            <section class="py-20 md:py-40 bg-black">
+                <div class="container px-4 mx-auto">
+                    <div class="max-w-2xl mx-auto mb-24 text-center">
+                        <div
+                            class="inline-flex items-center px-5 py-2 bg-white rounded-full mb-8"
+                        >
+                            <span
+                                class="block w-2 h-2 mr-2 rounded-full bg-indigo-500"
+                            ></span>
+                            <span
+                                class="uppercase text-sm font-medium tracking-tight"
+                                >HOW IT WORKS</span
+                            >
+                        </div>
+                        <h1
+                            class="text-6xl sm:text-7xl font-heading font-semibold text-white mb-14"
+                        >
+                            How does it work?
+                        </h1>
+                        <p class="text-2xl text-gray-300 mb-18">
+                            Simple steps to get matched with the right mentor
+                            and start learning immediately.
+                        </p>
+                    </div>
+                    <div class="max-w-xs mx-auto md:max-w-none">
+                        <div
+                            class="flex flex-wrap justify-between items-center -mx-4"
+                        >
+                            <div class="w-full lg:w-1/3 px-4 mb-10 lg:mb-0">
+                                <div
+                                    class="max-w-sm 2xl:max-w-none mx-auto pt-6 pb-14 px-8 sm:px-14 mb-10 bg-gray-900 rounded-4xl border border-gray-600"
+                                >
+                                    <span
+                                        class="block mb-6 text-5xl font-heading text-gray-400"
+                                        >01</span
+                                    >
+                                    <h4
+                                        class="max-w-xs text-3xl font-heading font-semibold text-white"
+                                    >
+                                        Click on the Get Started button and
+                                        choose a mentor
+                                    </h4>
+                                </div>
+                                <div
+                                    class="max-w-sm 2xl:max-w-none mx-auto pt-6 pb-14 px-8 sm:px-14 bg-gray-900 rounded-4xl border border-gray-600"
+                                >
+                                    <span
+                                        class="block mb-6 text-5xl font-heading text-gray-400"
+                                        >02</span
+                                    >
+                                    <h4
+                                        class="max-w-xs text-3xl font-heading font-semibold text-white"
+                                    >
+                                        Fill the checkbox what you need from a
+                                        mentor
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-1/3 px-4 mb-10 lg:mb-0">
+                                <img
+                                    class="px-6 2xl:px-0 mx-auto"
+                                    src="assets/images/avatar-woman.png"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="w-full lg:w-1/3 px-4">
+                                <div
+                                    class="max-w-sm 2xl:max-w-none mx-auto pt-6 pb-14 px-8 sm:px-14 mb-10 bg-gray-900 rounded-4xl border border-gray-600"
+                                >
+                                    <span
+                                        class="block mb-6 text-5xl font-heading text-gray-400"
+                                        >03</span
+                                    >
+                                    <h4
+                                        class="max-w-xs text-3xl font-heading font-semibold text-white"
+                                    >
+                                        Start from the free trial session
+                                    </h4>
+                                </div>
+                                <div
+                                    class="max-w-sm 2xl:max-w-none mx-auto pt-6 pb-14 px-8 sm:px-14 bg-gray-900 rounded-4xl border border-gray-600"
+                                >
+                                    <span
+                                        class="block mb-6 text-5xl font-heading text-gray-400"
+                                        >04</span
+                                    >
+                                    <h4
+                                        class="max-w-xs text-3xl font-heading font-semibold text-white"
+                                    >
+                                        Once satisfied, then pay
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- <section
+                id="become-mentor"
+                class="py-20 md:py-40 bg-yellowGray-500"
             >
-                <h2
-                    class="text-5xl font-semibold tracking-tighter text-center text-white"
-                >
-                    Checkout<br />
-                    Our Services
-                </h2>
-                <div class="flex flex-wrap justify-center gap-2 w-full">
-                    <div
-                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white hover:bg-[#cff245] box-content"
-                    >
-                        <i class="bi bi-1-circle-fill text-4xl"></i>
-                        <span class="text-center font-bold">
-                            1:1 Mentorship
-                        </span>
+                <div id="form-container" class="container px-4 mx-auto">
+                    <div class="max-w-2xl mx-auto mb-24 text-center">
+                        <div
+                            class="inline-flex items-center px-5 py-2 bg-white rounded-full mb-8"
+                        >
+                            <span
+                                class="block w-2 h-2 mr-2 rounded-full bg-yellow-400"
+                            ></span>
+                            <span
+                                class="uppercase text-sm font-medium tracking-tight text-yellow-800"
+                            >
+                                Ready to Begin?
+                            </span>
+                        </div>
+
+                        <h1
+                            class="text-6xl sm:text-7xl font-heading font-semibold text-yellow-900 mb-10"
+                        >
+                            Start Your Journey
+                        </h1>
+                        <p class="text-2xl text-yellow-700 mb-14">
+                            Answer the few questions and let’s help you find the
+                            right mentee!
+                        </p>
+                        <button
+                            hx-get="/name"
+                            hx-target="#form-container"
+                            hx-swap="innerHTML"
+                            class="group relative inline-block h-16 w-full sm:w-48 bg-blueGray-900 rounded cursor-pointer"
+                        >
+                            <div
+                                class="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300"
+                            >
+                                <div
+                                    class="flex h-full w-full items-center justify-center bg-white border-2 border-blueGray-900 rounded"
+                                >
+                                    <span
+                                        class="text-base font-semibold uppercase text-blueGray-900"
+                                    >
+                                        Start Now
+                                    </span>
+                                </div>
+                            </div>
+                        </button>
                     </div>
-                    <div
-                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white hover:bg-[#cff245] box-content"
-                    >
-                        <i class="bi bi-2-circle-fill text-4xl"></i>
-                        <span class="text-center font-bold">
-                            Guide to<br />Open Source
-                        </span>
-                    </div>
-                    <div
-                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-700 items-center bg-white hover:bg-[#cff245] box-content"
-                    >
-                        <i class="bi bi-3-circle-fill text-4xl"></i>
-                        <span class="text-center font-bold">
-                            Doubt Clearing<br />
-                            Sessions
-                        </span>
-                    </div>
-                    <div
-                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white hover:bg-[#cff245] box-content"
-                    >
-                        <i class="bi bi-4-circle-fill text-4xl"></i>
-                        <span class="text-center font-bold">
-                            In Depth<br />
-                            Topic Sessions
-                        </span>
-                    </div>
-                    <!-- <div
-                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white box-content"
-                    >
-                        <i class="bi bi-5-circle-fill text-4xl"></i>
-                        <span class="text-center font-bold">
-                            Lost<br />
-                            paper
-                        </span>
-                    </div>
-                    <div
-                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white box-content"
-                    >
-                        <i class="bi bi-6-circle-fill text-4xl"></i>
-                        <span class="text-center font-bold">
-                            Our best<br />
-                            Places
-                        </span>
-                    </div>
-                    <div
-                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white box-content"
-                    >
-                        <i class="bi bi-7-circle-fill text-4xl"></i>
-                        <span class="text-center font-bold">
-                            Our best<br />
-                            Places
-                        </span>
-                    </div>
-                    <div
-                        class="flex w-full max-w-[100px] flex-col gap-2 p-8 rounded-xl border border-gray-200 items-center bg-white box-content"
-                    >
-                        <i class="bi bi-8-circle-fill text-4xl"></i>
-                        <span class="text-center font-bold">
-                            Our best<br />
-                            Places
-                        </span>
-                    </div> -->
                 </div>
-            </div>
-        </section>
-        <!-- <section class="px-8 py-20 bg-[#f6f7fa] rounded-3xl">
-            <div class="h-full mx-auto max-w-5xl">
-                <div
-                    class="mx-auto max-w-5xl flex flex-col lg:flex-row gap-10 justify-between w-full"
-                >
-                    <div
-                        class="max-w-[200px] text-sm text-gray-400 mx-auto lg:ms-0"
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit.
+            </section> -->
+
+            <!-- <section
+                class="py-20 md:py-40 bg-yellowGray-50 overflow-hidden"
+                x-data="{ slideWidth: 0, activeSlide: 0, slideCount: 3 }"
+            >
+                <div class="container px-4 mx-auto">
+                    <div class="flex flex-wrap -mx-4">
+                        <div class="w-full lg:w-1/3 px-4 mb-16 lg:mb-0">
+                            <div class="max-w-sm mx-auto">
+                                <div
+                                    class="inline-flex items-center px-5 py-2 bg-white rounded-full mb-16"
+                                >
+                                    <span
+                                        class="block w-2 h-2 mr-2 rounded-full bg-blue-500"
+                                    ></span>
+                                    <span
+                                        class="uppercase text-sm font-medium tracking-tight"
+                                        >CUSTOMER REVIEWS</span
+                                    >
+                                </div>
+                                <h1
+                                    class="font-heading text-6xl font-semibold mb-10"
+                                >
+                                    New customer reviews
+                                </h1>
+                                <p class="text-2xl mb-16">
+                                    Create account to start using Mently.
+                                </p>
+                                <a
+                                    class="group relative inline-block h-16 mb-8 w-full md:w-36 bg-blueGray-900 rounded"
+                                    href="https://tally.so/r/wM2JW0"
+                                    target="_blank"
+                                >
+                                    <div
+                                        class="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300"
+                                    >
+                                        <div
+                                            class="flex h-full w-full items-center justify-center bg-blue-500 border-2 border-blueGray-900 rounded"
+                                        >
+                                            <span
+                                                class="text-base font-semibold uppercase"
+                                                >Join</span
+                                            >
+                                        </div>
+                                    </div></a
+                                >
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-2/3 px-4">
+                            <div
+                                class="xl:max-w-4xl xl:ml-auto mb-12 md:mb-6 relative"
+                            >
+                                <button
+                                    class="hidden md:inline-block absolute top-1/2 left-0 p-1"
+                                    x-on:click.prevent="activeSlide &gt; 0 ? (activeSlide -= 1, slideWidth -= $refs['slide' + (activeSlide + 1)].offsetWidth) : null"
+                                >
+                                    <svg
+                                        width="10"
+                                        height="16"
+                                        viewbox="0 0 10 16"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M7.99906 16L9.41406 14.585L3.82906 9L2.74902 8L3.82906 7L9.41406 1.415L7.99906 8.29971e-07L-0.000937716 8L7.99906 16Z"
+                                            fill="#04082F"
+                                        ></path>
+                                    </svg>
+                                </button>
+                                <button
+                                    class="hidden md:inline-block absolute top-1/2 right-0 p-1"
+                                    x-on:click.prevent="activeSlide &lt; slideCount - 1 ? (activeSlide += 1, slideWidth += $refs['slide' + activeSlide].offsetWidth) : activeSlide = slideCount - 1"
+                                >
+                                    <svg
+                                        width="10"
+                                        height="16"
+                                        viewbox="0 0 10 16"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M2.00094 0L0.585938 1.415L6.17094 7L7.25098 8L6.17094 9L0.585938 14.585L2.00094 16L10.0009 8L2.00094 0Z"
+                                            fill="#04082F"
+                                        ></path>
+                                    </svg>
+                                </button>
+                                <div
+                                    class="max-w-xl xl:max-w-2xl mx-auto bg-white rounded-3xl"
+                                >
+                                    <div
+                                        class="py-7 px-6 sm:px-18 border-b border-yellowGray-50"
+                                    >
+                                        <div class="overflow-hidden">
+                                            <div
+                                                class="flex transition-transform duration-500 ease-in-out -m-5"
+                                                :style="'transform: translateX(-' + slideWidth + 'px)'"
+                                            >
+                                                <div
+                                                    class="flex-shrink-0 w-full p-5"
+                                                    x-ref="slide1"
+                                                >
+                                                    <div
+                                                        class="flex flex-wrap -mb-2 items-center"
+                                                    >
+                                                        <img
+                                                            class="w-16 h-16 mb-2 mr-6"
+                                                            src="assets/assets/images/avatar-review-man.png"
+                                                            alt=""
+                                                        />
+                                                        <div class="mb-2">
+                                                            <h4
+                                                                class="text-2xl font-medium"
+                                                            >
+                                                                Glen Harres
+                                                            </h4>
+                                                            <span
+                                                                class="text-xs"
+                                                                >Spotify, Junior
+                                                                Designer</span
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                    <div class="pt-10 pb-12">
+                                                        <div
+                                                            class="relative pr-12 mb-16 md:mb-24"
+                                                        >
+                                                            <span
+                                                                class="absolute top-0 right-0"
+                                                            >
+                                                                <svg
+                                                                    width="29"
+                                                                    height="41"
+                                                                    viewbox="0 0 29 41"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path
+                                                                        d="M22.536 9.016C23.64 9.016 24.576 9.256 25.344 9.736C26.16 10.168 26.832 10.744 27.36 11.464C27.888 12.232 28.248 13.12 28.44 14.128C28.68 15.136 28.8 16.12 28.8 17.08C28.8 19.432 28.176 21.616 26.928 23.632C25.728 25.648 23.856 27.256 21.312 28.456L20.664 27.16C22.056 26.536 23.256 25.624 24.264 24.424C25.32 23.176 25.92 21.88 26.064 20.536C26.256 19.672 26.256 18.856 26.064 18.088C25.104 19.048 23.856 19.528 22.32 19.528C20.832 19.528 19.584 19.072 18.576 18.16C17.568 17.248 17.064 15.952 17.064 14.272C17.064 12.736 17.568 11.488 18.576 10.528C19.632 9.52 20.952 9.016 22.536 9.016ZM8.568 9.016C9.672 9.016 10.608 9.256 11.376 9.736C12.192 10.168 12.864 10.744 13.392 11.464C13.92 12.232 14.28 13.12 14.472 14.128C14.712 15.136 14.832 16.12 14.832 17.08C14.832 19.432 14.208 21.616 12.96 23.632C11.76 25.648 9.888 27.256 7.344 28.456L6.696 27.16C8.088 26.536 9.288 25.624 10.296 24.424C11.352 23.176 11.952 21.88 12.096 20.536C12.288 19.672 12.288 18.856 12.096 18.088C11.136 19.048 9.888 19.528 8.352 19.528C6.864 19.528 5.616 19.072 4.608 18.16C3.6 17.248 3.096 15.952 3.096 14.272C3.096 12.736 3.6 11.488 4.608 10.528C5.664 9.52 6.984 9.016 8.568 9.016Z"
+                                                                        fill="#9CD0FF"
+                                                                    ></path></svg
+                                                            ></span>
+                                                            <p
+                                                                class="text-2xl md:text-3xl leading-9"
+                                                            >
+                                                                Tried a lot,
+                                                                find the best
+                                                                Tried a lot.
+                                                                Choose this one.
+                                                                A real nice
+                                                                tools and app.
+                                                                It comes with a
+                                                                few free
+                                                                plug-ins that
+                                                                will be more
+                                                                than enough for
+                                                                beginners.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="flex-shrink-0 w-full p-5"
+                                                    x-ref="slide2"
+                                                >
+                                                    <div
+                                                        class="flex flex-wrap -mb-2 items-center"
+                                                    >
+                                                        <img
+                                                            class="w-16 h-16 mb-2 mr-6"
+                                                            src="assets/assets/images/avatar-review-man.png"
+                                                            alt=""
+                                                        />
+                                                        <div class="mb-2">
+                                                            <h4
+                                                                class="text-2xl font-medium"
+                                                            >
+                                                                Sarah Chen
+                                                            </h4>
+                                                            <span
+                                                                class="text-xs"
+                                                                >TechGuru,
+                                                                Senior
+                                                                Analyst</span
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                    <div class="pt-10 pb-12">
+                                                        <div
+                                                            class="relative pr-12 mb-16 md:mb-24"
+                                                        >
+                                                            <span
+                                                                class="absolute top-0 right-0"
+                                                            >
+                                                                <svg
+                                                                    width="29"
+                                                                    height="41"
+                                                                    viewbox="0 0 29 41"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path
+                                                                        d="M22.536 9.016C23.64 9.016 24.576 9.256 25.344 9.736C26.16 10.168 26.832 10.744 27.36 11.464C27.888 12.232 28.248 13.12 28.44 14.128C28.68 15.136 28.8 16.12 28.8 17.08C28.8 19.432 28.176 21.616 26.928 23.632C25.728 25.648 23.856 27.256 21.312 28.456L20.664 27.16C22.056 26.536 23.256 25.624 24.264 24.424C25.32 23.176 25.92 21.88 26.064 20.536C26.256 19.672 26.256 18.856 26.064 18.088C25.104 19.048 23.856 19.528 22.32 19.528C20.832 19.528 19.584 19.072 18.576 18.16C17.568 17.248 17.064 15.952 17.064 14.272C17.064 12.736 17.568 11.488 18.576 10.528C19.632 9.52 20.952 9.016 22.536 9.016ZM8.568 9.016C9.672 9.016 10.608 9.256 11.376 9.736C12.192 10.168 12.864 10.744 13.392 11.464C13.92 12.232 14.28 13.12 14.472 14.128C14.712 15.136 14.832 16.12 14.832 17.08C14.832 19.432 14.208 21.616 12.96 23.632C11.76 25.648 9.888 27.256 7.344 28.456L6.696 27.16C8.088 26.536 9.288 25.624 10.296 24.424C11.352 23.176 11.952 21.88 12.096 20.536C12.288 19.672 12.288 18.856 12.096 18.088C11.136 19.048 9.888 19.528 8.352 19.528C6.864 19.528 5.616 19.072 4.608 18.16C3.6 17.248 3.096 15.952 3.096 14.272C3.096 12.736 3.6 11.488 4.608 10.528C5.664 9.52 6.984 9.016 8.568 9.016Z"
+                                                                        fill="#9CD0FF"
+                                                                    ></path></svg
+                                                            ></span>
+                                                            <p
+                                                                class="text-2xl md:text-3xl leading-9"
+                                                            >
+                                                                This software is
+                                                                the pinnacle of
+                                                                efficiency and
+                                                                performance.
+                                                                With its
+                                                                intuitive
+                                                                interface and
+                                                                seamless
+                                                                integration,
+                                                                it's perfect for
+                                                                users of all
+                                                                levels.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="flex-shrink-0 w-full p-5"
+                                                    x-ref="slide3"
+                                                >
+                                                    <div
+                                                        class="flex flex-wrap -mb-2 items-center"
+                                                    >
+                                                        <img
+                                                            class="w-16 h-16 mb-2 mr-6"
+                                                            src="assets/assets/images/avatar-review-man.png"
+                                                            alt=""
+                                                        />
+                                                        <div class="mb-2">
+                                                            <h4
+                                                                class="text-2xl font-medium"
+                                                            >
+                                                                Max Reynolds
+                                                            </h4>
+                                                            <span
+                                                                class="text-xs"
+                                                                >Digital Trends,
+                                                                Tech
+                                                                Editor</span
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                    <div class="pt-10 pb-12">
+                                                        <div
+                                                            class="relative pr-12 mb-16 md:mb-24"
+                                                        >
+                                                            <span
+                                                                class="absolute top-0 right-0"
+                                                            >
+                                                                <svg
+                                                                    width="29"
+                                                                    height="41"
+                                                                    viewbox="0 0 29 41"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path
+                                                                        d="M22.536 9.016C23.64 9.016 24.576 9.256 25.344 9.736C26.16 10.168 26.832 10.744 27.36 11.464C27.888 12.232 28.248 13.12 28.44 14.128C28.68 15.136 28.8 16.12 28.8 17.08C28.8 19.432 28.176 21.616 26.928 23.632C25.728 25.648 23.856 27.256 21.312 28.456L20.664 27.16C22.056 26.536 23.256 25.624 24.264 24.424C25.32 23.176 25.92 21.88 26.064 20.536C26.256 19.672 26.256 18.856 26.064 18.088C25.104 19.048 23.856 19.528 22.32 19.528C20.832 19.528 19.584 19.072 18.576 18.16C17.568 17.248 17.064 15.952 17.064 14.272C17.064 12.736 17.568 11.488 18.576 10.528C19.632 9.52 20.952 9.016 22.536 9.016ZM8.568 9.016C9.672 9.016 10.608 9.256 11.376 9.736C12.192 10.168 12.864 10.744 13.392 11.464C13.92 12.232 14.28 13.12 14.472 14.128C14.712 15.136 14.832 16.12 14.832 17.08C14.832 19.432 14.208 21.616 12.96 23.632C11.76 25.648 9.888 27.256 7.344 28.456L6.696 27.16C8.088 26.536 9.288 25.624 10.296 24.424C11.352 23.176 11.952 21.88 12.096 20.536C12.288 19.672 12.288 18.856 12.096 18.088C11.136 19.048 9.888 19.528 8.352 19.528C6.864 19.528 5.616 19.072 4.608 18.16C3.6 17.248 3.096 15.952 3.096 14.272C3.096 12.736 3.6 11.488 4.608 10.528C5.664 9.52 6.984 9.016 8.568 9.016Z"
+                                                                        fill="#9CD0FF"
+                                                                    ></path></svg
+                                                            ></span>
+                                                            <p
+                                                                class="text-2xl md:text-3xl leading-9"
+                                                            >
+                                                                Look no further
+                                                                for the ultimate
+                                                                toolkit. This
+                                                                software
+                                                                surpasses the
+                                                                competition with
+                                                                its
+                                                                comprehensive
+                                                                features and
+                                                                user-friendly
+                                                                design.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:hidden w-full px-4 mt-12 text-center"
+                                >
+                                    <button
+                                        class="inline-block p-1 mr-2"
+                                        x-on:click.prevent="activeSlide &gt; 0 ? (activeSlide -= 1, slideWidth -= $refs['slide' + (activeSlide + 1)].offsetWidth) : null"
+                                    >
+                                        <svg
+                                            width="10"
+                                            height="16"
+                                            viewbox="0 0 10 16"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M7.99906 16L9.41406 14.585L3.82906 9L2.74902 8L3.82906 7L9.41406 1.415L7.99906 8.29971e-07L-0.000937716 8L7.99906 16Z"
+                                                fill="#04082F"
+                                            ></path>
+                                        </svg>
+                                    </button>
+                                    <button
+                                        class="inline-block p-1"
+                                        x-on:click.prevent="activeSlide &lt; slideCount - 1 ? (activeSlide += 1, slideWidth += $refs['slide' + activeSlide].offsetWidth) : activeSlide = slideCount - 1"
+                                    >
+                                        <svg
+                                            width="10"
+                                            height="16"
+                                            viewbox="0 0 10 16"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M2.00094 0L0.585938 1.415L6.17094 7L7.25098 8L6.17094 9L0.585938 14.585L2.00094 16L10.0009 8L2.00094 0Z"
+                                                fill="#04082F"
+                                            ></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="max-w-xl xl:max-w-2xl mx-auto">
+                                <div class="flex flex-wrap -mx-3">
+                                    <!-- <div
+                                        class="w-full sm:w-1/2 px-3 mb-6 md:mb-0"
+                                    >
+                                        <div
+                                            class="pt-12 pb-14 px-8 text-center bg-white rounded-3xl"
+                                        >
+                                            <div
+                                                class="flex mb-6 items-center justify-center"
+                                            >
+                                                <svg
+                                                    class="mr-1"
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                                <svg
+                                                    class="mr-1"
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                                <svg
+                                                    class="mr-1"
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                                <svg
+                                                    class="mr-1"
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                                <svg
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                            <h5 class="text-2xl font-semibold">
+                                                Trustpilot 4,9/5
+                                            </h5>
+                                            <span>dapibus, sodales purus</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full sm:w-1/2 px-3">
+                                        <div
+                                            class="pt-12 pb-14 px-8 text-center bg-white rounded-3xl"
+                                        >
+                                            <div
+                                                class="flex mb-6 items-center justify-center"
+                                            >
+                                                <svg
+                                                    class="mr-1"
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                                <svg
+                                                    class="mr-1"
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                                <svg
+                                                    class="mr-1"
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                                <svg
+                                                    class="mr-1"
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                                <svg
+                                                    width="22"
+                                                    height="22"
+                                                    viewbox="0 0 22 22"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M22 8.70844H13.6583L11 0.458435L8.34166 8.70844H0L6.80168 13.5484L4.19835 21.5418L11 16.5918L17.8017 21.5418L15.1983 13.5484L22 8.70844Z"
+                                                        fill="#9CCFFF"
+                                                    ></path>
+                                                    <defs>
+                                                        <rect
+                                                            width="22"
+                                                            height="22"
+                                                            fill="white"
+                                                        ></rect>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                            <h5 class="text-2xl font-semibold">
+                                                Google: 4.7/5
+                                            </h5>
+                                            <span>Nulla placerat liberod</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="max-w-4xl mx-auto"></div>
                     </div>
-                    <ul
-                        class="flex flex-row gap-5 justify-center flex-wrap items-center"
-                    >
-                        <li>
-                            <img
-                                class="grayscale max-w-[100px]"
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"
-                                alt=""
-                            />
-                        </li>
-                        <li>
-                            <img
-                                class="grayscale max-w-[100px]"
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Coinbase.svg/2560px-Coinbase.svg.png"
-                                alt=""
-                            />
-                        </li>
-                        <li>
-                            <img
-                                class="grayscale max-w-[100px]"
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png"
-                                alt=""
-                            />
-                        </li>
-                    </ul>
                 </div>
-            </div>
-        </section>
-        <section class="px-8 py-20">
-            <div class="h-full mx-auto max-w-5xl">
-                <div
-                    class="mx-auto max-w-7xl px-4l lg:text-center sm:px-6 lg:px-8 pb-10"
-                >
-                    <div class="max-w-3xl mx-auto lg:max-w-none">
+            </section> -->
+
+            <section
+                id="faqs-section"
+                class="pt-20 md:pt-40 bg-yellowGray-50 overflow-hidden"
+            >
+                <div class="container px-4 mx-auto mb-20 sm:mb-32">
+                    <div class="text-center mb-24 md:mb-32">
+                        <div class="inline-flex items-center mb-8">
+                            <span
+                                class="block w-2 h-2 mr-2 rounded-full bg-blue-500"
+                            ></span>
+                            <span
+                                class="uppercase text-lg text-gray-800 font-medium"
+                                >FAQs</span
+                            >
+                        </div>
                         <h2
-                            class="text-5xl font-semibold tracking-tighter text-white text-center"
+                            class="text-5xl sm:text-7xl md:text-8xl font-heading font-semibold text-gray-900"
                         >
-                            Level up your
-                            <span class="lg:block">development experience</span>
+                            Frequently Asked Questions
                         </h2>
                     </div>
-                </div>
-                <div
-                    class="items-start gap-2 mx-auto items-center mt-12 flex flex-col lg:grid lg:grid-cols-3"
-                >
-                    <div
-                        class="flex flex-col justify-between h-full p-8 bg-gray-50 rounded-3xl"
-                    >
-                        <div class="flex flex-col">
+                    <div class="max-w-4xl mx-auto space-y-16">
+                        <div class="flex">
+                            <span
+                                class="flex-shrink-0 mt-2 mr-6 w-3 h-3 bg-yellow-500 rounded-full"
+                            ></span>
                             <div>
-                                <h3 class="mt-4 font-medium text-gray-900">
-                                    SendIt Monthly License
-                                </h3>
+                                <h4
+                                    class="text-2xl sm:text-3xl font-heading font-semibold text-gray-900 mb-4"
+                                >
+                                    What is Mently?
+                                </h4>
+                                <p class="text-gray-700 text-lg pb-4">
+                                    Mently is a personalized learning platform
+                                    that connects you directly with real mentor.
+                                    Instead of taking generic, pre-recorded
+                                    courses, you get live guidance, ongoing
+                                    updates, and personal advice — so you can
+                                    grow faster.
+                                </p>
                             </div>
-                            <div class="order-first text-2xl font-medium">
-                                $10 <span>/month</span>
-                            </div>
-                            <p class="mt-2 text-xs italic">
-                                Excluding local taxes or VAT if applicable.
-                            </p>
-                            <ul
-                                class="flex flex-col gap-2 mt-12 text-sm text-gray-600"
-                            >
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>Boost your productivity with SendIt</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>
-                                        Available for Google Chrome and Chromium
-                                    </p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>License for 3 devices</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>
-                                        Permanent access to the SendIt community
-                                    </p>
-                                </li>
-                            </ul>
                         </div>
-                        <div class="mt-8">
-                            <button
-                                class="flex items-center justify-center w-full h-10 px-4 py-2 text-sm font-semibold text-gray-600 transition-all bg-white border border-gray-300 rounded-lg"
-                            >
-                                Get started
-                            </button>
-                        </div>
-                    </div>
-                    <div
-                        class="flex flex-col text-black justify-between h-full p-8 bg-[#cff245] rounded-3xl"
-                    >
-                        <div class="flex flex-col">
+                        <div class="flex">
+                            <span
+                                class="flex-shrink-0 mt-2 mr-6 w-3 h-3 bg-yellow-500 rounded-full"
+                            ></span>
                             <div>
-                                <h3 class="mt-4 font-medium">
-                                    SendIt Yearly License
-                                </h3>
+                                <h4
+                                    class="text-2xl sm:text-3xl font-heading font-semibold text-gray-900 mb-4"
+                                >
+                                    Is this a course platform?
+                                </h4>
+                                <p class="text-gray-700 text-lg pb-4">
+                                    No. Mently is not about courses — it's about
+                                    real-time, 1:1 mentorship depending on your
+                                    needs.
+                                </p>
                             </div>
-                            <div class="order-first text-2xl font-medium">
-                                $80 <span>/year</span>
-                            </div>
-                            <p class="mt-2 text-xs italic text-gray-700">
-                                Excluding local taxes or VAT if applicable.
-                            </p>
-                            <ul class="flex flex-col gap-2 mt-12 text-sm">
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>Save 50% - 6 months free</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>Boost your productivity with SendIt</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>
-                                        Available for Google Chrome and Chromium
-                                    </p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>License for 3 devices</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>
-                                        Permanent access to theSendIt community
-                                    </p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>
-                                        Get all updates and new features for one
-                                        year
-                                    </p>
-                                </li>
-                            </ul>
                         </div>
-                        <div class="mt-8">
-                            <button
-                                class="flex items-center justify-center w-full h-10 px-4 py-2 text-sm font-semibold transition-all bg-white border border-gray-300 rounded-lg text-gray-600"
-                            >
-                                Get started
-                            </button>
-                        </div>
-                    </div>
-                    <div
-                        class="flex flex-col justify-between h-full p-8 bg-gray-50 rounded-3xl"
-                    >
-                        <div class="flex flex-col">
+                        <div class="flex">
+                            <span
+                                class="flex-shrink-0 mt-2 mr-6 w-3 h-3 bg-yellow-500 rounded-full"
+                            ></span>
                             <div>
-                                <h3 class="mt-4 font-medium">
-                                    SendIt Perpetual License
-                                </h3>
+                                <h4
+                                    class="text-2xl sm:text-3xl font-heading font-semibold text-gray-900 mb-4"
+                                >
+                                    How do I get matched with a mentor?
+                                </h4>
+                                <p class="text-gray-700 text-lg pb-4">
+                                    You can easily get matched with a mentor
+                                    from the "Meet Our Amazing Mentors" section,
+                                    look at their services and choose the
+                                    service to continue
+                                </p>
                             </div>
-                            <div class="order-first text-2xl font-medium">
-                                $199 <span>/one-time</span>
-                            </div>
-                            <p class="mt-2 text-xs italic text-gray-600">
-                                Excluding local taxes or VAT if applicable.
-                            </p>
-                            <ul
-                                class="flex flex-col gap-2 mt-12 text-sm text-gray-600"
-                            >
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>Pay once, use forever</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>Boost your productivity with SendIt</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>
-                                        Available for Google Chrome and Chromium
-                                    </p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>License for 3 devices</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>
-                                        Permanent access to theSendIt community
-                                    </p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="flex-shrink-0">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-circle-check-filled"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <path
-                                                stroke="none"
-                                                d="M0 0h24v24H0z"
-                                                fill="none"
-                                            ></path>
-                                            <path
-                                                d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
-                                                stroke-width="0"
-                                                fill="currentColor"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                    <p>Get all updates and new features</p>
-                                </li>
-                            </ul>
                         </div>
-                        <div class="mt-8">
-                            <button
-                                class="flex items-center justify-center w-full h-10 px-4 py-2 text-sm font-semibold text-gray-600 transition-all bg-white border border-gray-300 rounded-lg"
-                            >
-                                Get started
-                            </button>
+                        <div class="flex">
+                            <span
+                                class="flex-shrink-0 mt-2 mr-6 w-3 h-3 bg-yellow-500 rounded-full"
+                            ></span>
+                            <div>
+                                <h4
+                                    class="text-2xl sm:text-3xl font-heading font-semibold text-gray-900 mb-4"
+                                >
+                                    How does the pricing work?
+                                </h4>
+                                <p class="text-gray-700 text-lg pb-4">
+                                    Each service price is dependent on the
+                                    mentor. We just take a small commission from
+                                    that money but before paying us, you can go
+                                    for free trial with a mentor. After that,
+                                    we'll send you the Payment request give us
+                                    money.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <span
+                                class="flex-shrink-0 mt-2 mr-6 w-3 h-3 bg-yellow-500 rounded-full"
+                            ></span>
+                            <div>
+                                <h4
+                                    class="text-2xl sm:text-3xl font-heading font-semibold text-gray-900 mb-4"
+                                >
+                                    Will I get the money-back guarantee?
+                                </h4>
+                                <p class="text-gray-700 text-lg pb-4">
+                                    Yes, we'll give you the money-back guarantee
+                                    if you're not satisfied after first 20%
+                                    result and we won't ask any question.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <span
+                                class="flex-shrink-0 mt-2 mr-6 w-3 h-3 bg-yellow-500 rounded-full"
+                            ></span>
+                            <div>
+                                <h4
+                                    class="text-2xl sm:text-3xl font-heading font-semibold text-gray-900 mb-4"
+                                >
+                                    How I would be communicating with a mentor
+                                    in real-time?
+                                </h4>
+                                <p class="text-gray-700 text-lg">
+                                    All the communication will happen in the
+                                    discord server where we'll add you and the
+                                    mentor privately and you can communicate and
+                                    ask questions there. The link is down below.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section> -->
-        <section id="faqs" class="py-20 bg-[#f6f7fa] rounded-3xl">
-            <div class="h-full max-w-5xl mx-auto">
-                <div class="flex flex-col gap-12">
-                    <div>
+            </section>
+
+            <section class="relative py-34 mb-50 overflow-hidden">
+                <img
+                    class="absolute top-0 left-0 h-full w-full object-cover"
+                    src="assets/images/mountain.jpg"
+                    alt=""
+                />
+                <div class="relative container px-4 mx-auto">
+                    <div class="max-w-xs md:max-w-md lg:max-w-lg">
                         <h2
-                            class="font-semibold tracking-tighter text-5xl text-center"
+                            class="text-white text-5xl md:text-7xl lg:text-8xl font-heading font-semibold mb-10"
                         >
-                            FAQs
+                            Personalized Leraning Experience
                         </h2>
-                        <p
-                            class="mx-auto mt-4 text-sm text-gray-600 text-center"
-                        >
-                            Frequent questions &amp; answers
+                        <p class="text-white text-2xl mb-14">
+                            Choose a mentor & a mentorship service
                         </p>
-                    </div>
-                    <div
-                        class="flex flex-col mx-auto max-w-2xl gap-6 text-base text-gray-400 w-full px-4"
-                    >
-                        <details>
-                            <summary
-                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
+                        <a
+                            class="group relative inline-block h-16 w-full sm:w-48 bg-blueGray-900 rounded"
+                            href="#mentors-section"
+                        >
+                            <div
+                                class="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300"
                             >
-                                What is Mently?
-                            </summary>
-                            <p class="pt-4 text-sm text-gray-500">
-                                Mently is a personalized learning platform that
-                                connects you directly with real mentors and
-                                authors. Instead of generic, pre-recorded
-                                courses, you get live guidance, ongoing updates,
-                                and tailored advice — so you can grow faster and
-                                more confidently.
-                            </p>
-                        </details>
-                        <details>
-                            <summary
-                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
-                            >
-                                How does Mently work?
-                            </summary>
-                            <p class="pt-4 text-sm text-gray-500">
-                                Right now, Mently is launching as a landing page
-                                and you do two things here:
-                            </p>
-                            <p class="pt-4 text-sm text-gray-500">
-                                Fill out a short form above to let us know which
-                                creator or mentor you’d like guidance from.
-                            </p>
-                            <p class="pt-4 text-sm text-gray-500">
-                                Subscribe to our newsletter to receive updates,
-                                advice, and valuable insights about the
-                                mentoring process. Once we’re live, we’ll
-                                personally connect you with experienced mentors
-                                and keep you informed every step of the way.
-                            </p>
-                        </details>
-                        <details>
-                            <summary
-                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
-                            >
-                                How do I get mentored by a mentor?
-                            </summary>
-                            <p class="pt-4 text-sm text-gray-500">
-                                You simply fill out the mentoring form above.
-                                Once we receive your interest, we’ll connect you
-                                directly with the our mentor mentor so you can
-                                arrange personalized sessions that fit your
-                                goals.
-                            </p>
-                        </details>
-                        <details>
-                            <summary
-                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
-                            >
-                                What will I get after subscribing to the
-                                Newsletter?
-                            </summary>
-                            <p class="pt-4 text-sm text-gray-500">
-                                By subscribing, you’ll receive regular updates
-                                and insider information about our progress, new
-                                mentors joining the platform, and practical
-                                learning advice — straight to your inbox.
-                            </p>
-                        </details>
-                        <details>
-                            <summary
-                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
-                            >
-                                How much does it cost?
-                            </summary>
-                            <p class="pt-4 text-sm text-gray-500">
-                                The cost depends on the mentor or author you
-                                choose. Every mentor sets their own pricing
-                                based on their expertise and the service they
-                                offer — so you’ll always know upfront what to
-                                expect.
-                            </p>
-                        </details>
-                        <details>
-                            <summary
-                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
-                            >
-                                When will the full platform be ready?
-                            </summary>
-                            <p class="pt-4 text-sm text-gray-500">
-                                Our platform is in its early stages. Right now,
-                                we’re collecting interest and building the core
-                                product. Subscribers will be the first to know
-                                when we officially launch — and will also
-                                receive exclusive early access and discounts!
-                            </p>
-                        </details>
-                        <details>
-                            <summary
-                                class="cursor-pointer text-base font-medium tracking-tight text-gray-900"
-                            >
-                                What kind of mentors will I find on Mently?
-                            </summary>
-                            <p class="pt-4 text-sm text-gray-500">
-                                Our mentors come from all kinds of backgrounds —
-                                from authors and tech experts to designers,
-                                educators, and entrepreneurs. But for now, we
-                                are in early stage, so we are limiting it to
-                                tech.
-                            </p>
-                        </details>
+                                <div
+                                    class="flex h-full w-full items-center justify-center bg-white border-2 border-blueGray-900 rounded"
+                                >
+                                    <span
+                                        class="text-base font-semibold uppercase"
+                                        >Learn more</span
+                                    >
+                                </div>
+                            </div></a
+                        >
                     </div>
                 </div>
-            </div>
-        </section>
-        <footer class="px-8 py-20 bg-black text-white">
-            <div
-                class="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8"
+            </section>
+
+            <section
+                id="contact-section"
+                class="relative py-16 overflow-hidden"
             >
-                <!-- First column: Name + logo -->
-                <div>
-                    <div class="inline-flex items-center gap-3">
-                        <!-- Example logo — replace with your real image or icon -->
-                        <img
-                            src="./imgs/favico.png"
-                            alt="Mently Logo"
-                            class="w-12 h-12"
-                        />
-                        <p class="text-2xl font-bold uppercase">Mently</p>
+                <div class="relative px-4 md:px-14 mx-auto">
+                    <div class="max-w-4xl">
+                        <div class="flex flex-wrap -mx-4 -mb-10">
+                            <!-- <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-10">
+                                <h4
+                                    class="font-heading text-3xl font-medium mb-8"
+                                >
+                                    About
+                                </h4>
+                                <ul>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Story</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Creative Team</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Founder</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Why us</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Comparison</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Our Mission</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Idea</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div> -->
+                            <!-- <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-10">
+                                <h4
+                                    class="font-heading text-3xl font-medium mb-8"
+                                >
+                                    Product
+                                </h4>
+                                <ul>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Plans</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Pricing</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Integrations</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Sign Up</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#"
+                                            >Careers</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div> -->
+                            <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-10">
+                                <h4
+                                    class="font-heading text-3xl font-medium mb-8"
+                                >
+                                    Follow
+                                </h4>
+                                <ul>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="https://www.linkedin.com/company/mentlycc"
+                                            target="_blank"
+                                            >LinkedIn</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="https://x.com/ibilalkayy_"
+                                            target="_blank"
+                                            >X (Twitter)</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="https://github.com/ibilalkayy"
+                                            target="_blank"
+                                            >GitHub</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="https://youtube.com/@coderoamer"
+                                            target="_blank"
+                                            >YouTube</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="https://discord.gg/KHdUDwhW"
+                                            target="_blank"
+                                            >Discord</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="https://8414113d.sibforms.com/serve/MUIFANlIajRT3eeVps2E1KirBd01S_Po-HnJZBFrz5FpTZYdkEU0z05DPrnkWaKFHEBT_awTFWIcwHWk_vLFkp22xB6e1CG5UAsQCYDogmmBVa-jVvfEw1yk5NbgEKCjg5_g-JDe7AUzfjG37V1iIaAczDJ3zjEPG_jsn6GdC9-8wd8Vv0FZWBdhMWO8SM30RTtYEmDtw5S-LHly"
+                                            target="_blank"
+                                            >Newsletter</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-10">
+                                <h4
+                                    class="font-heading text-3xl font-medium mb-8"
+                                >
+                                    Support
+                                </h4>
+                                <ul>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="#faqs-section"
+                                            >FAQs</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="https://tally.so/r/3x7kXE"
+                                            target="_blank"
+                                            >Affiliate Program</a
+                                        >
+                                    </li>
+                                    <li class="mb-2">
+                                        <a
+                                            class="inline-block text-2xs"
+                                            href="mailto:help@mently.cc"
+                                            >help@mently.cc</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <p class="mt-2 text-sm text-gray-400">
-                        Personalized mentorship for your growth journey.
-                    </p>
-                </div>
-
-                <!-- Second column: Social links -->
-                <div class="flex flex-col items-start">
-                    <p class="font-semibold mb-2">Follow us</p>
-                    <div class="flex gap-3">
+                    <div class="max-w-6xl mt-44 md:mt-42">
+                        <!-- <div class="flex flex-wrap -mx-4 -mb-2">
+                            <div class="px-4 mb-2">
+                                <a class="inline-block text-xs" href="#"
+                                    >Privacy Policy</a
+                                >
+                            </div>
+                            <div class="px-4 mb-2">
+                                <a class="inline-block text-xs" href="#"
+                                    >Terms of Use</a
+                                >
+                            </div>
+                            <div class="px-4 mb-2">
+                                <a class="inline-block text-xs" href="#"
+                                    >Sales and Refunds</a
+                                >
+                            </div>
+                            <div class="px-4 mb-2">
+                                <a class="inline-block text-xs" href="#"
+                                    >Legal</a
+                                >
+                            </div>
+                            <div class="px-4 mb-2">
+                                <a class="inline-block text-xs" href="#"
+                                    >Site Map</a
+                                >
+                            </div>
+                        </div> -->
+                        <div class="mt-3 pt-4 border-t border-gray-50">
+                            <p class="text-xs text-gray-900">
+                                Copyright © Mently. All rights reserved.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute top-0 right-0 mr-4">
                         <a
+                            class="flex w-10 h-10 mb-3 items-center justify-center rounded-full bg-gray-800 transform hover:scale-110 transition duration-300 ease-in-out"
+                            href="https://www.linkedin.com/in/ibilalkayy"
                             target="_blank"
-                            href="https://ibilalkayy.com"
-                            class="hover:text-blue-400"
                         >
-                            <i class="fas fa-globe text-xl"></i>
+                            <svg
+                                width="16"
+                                height="16"
+                                fill="white"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6 1.1 6 0 4.88 0 3.5S1.1 1 2.49 1C3.87 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.1c.7-1.3 2.5-2.6 5.2-2.6 5.6 0 6.6 3.7 6.6 8.5V24h-5v-7.5c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.9 2-2.9 4v7.6h-5V8z"
+                                />
+                            </svg>
                         </a>
                         <a
+                            class="flex w-10 h-10 mb-3 items-center justify-center rounded-full bg-gray-800 transform hover:scale-110 transition duration-300 ease-in-out"
+                            href="https://x.com/ibilalkayy_"
                             target="_blank"
-                            href="https://x.com/ibilalkayy"
-                            class="hover:text-blue-400"
                         >
-                            <i class="fab fa-x-twitter text-xl"></i>
+                            <svg
+                                width="16"
+                                height="16"
+                                fill="white"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M18.244 3H21.682L14.893 10.624L23 21H16.775L11.762 14.902L6.071 21H2.63L9.844 12.876L2 3H8.387L12.951 8.592L18.244 3ZM17.151 19H18.963L8.931 5.103H6.982L17.151 19Z"
+                                />
+                            </svg>
                         </a>
                         <a
+                            class="flex w-10 h-10 mb-3 items-center justify-center rounded-full bg-gray-800 transform hover:scale-110 transition duration-300 ease-in-out"
+                            href="https://www.youtube.com/@coderoamer"
                             target="_blank"
-                            href="https://linkedin.com/in/ibilalkayy"
-                            class="hover:text-blue-600"
                         >
-                            <i class="fab fa-linkedin text-xl"></i>
-                        </a>
-                        <a
-                            target="_blank"
-                            href="https://github.com/ibilalkayy"
-                            class="hover:text-gray-300"
-                        >
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a
-                            target="_blank"
-                            href="https://youtube.com/@coderoamer"
-                            class="hover:text-gray-300"
-                        >
-                            <i class="fab fa-youtube text-xl"></i>
+                            <svg
+                                width="16"
+                                height="16"
+                                fill="white"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.6-.9-2-1C16.4 2.5 12 2.5 12 2.5h-.1s-4.4 0-8.6.4c-.5.1-1.3.1-2 1C.6 4.6.5 6.2.5 6.2S.3 8 .3 9.8v1.8c0 1.8.2 3.6.2 3.6s.2 1.6.8 2.3c.8.9 1.8.8 2.2 1 1.6.2 6.5.4 6.5.4s4.4 0 8.6-.4c.5-.1 1.3-.1 2-1 .6-.7.8-2.3.8-2.3s.2-1.8.2-3.6V9.8c0-1.8-.2-3.6-.2-3.6zM9.8 15.5v-7l6.5 3.5-6.5 3.5z"
+                                />
+                            </svg>
                         </a>
                     </div>
-                    <br />
-                    <p class="text-md text-gray-400">
-                        <b>Email:</b> help@mently.cc
-                    </p>
                 </div>
+            </section>
+        </div>
 
-                <!- Third column: Newsletter form -->
-                <div>
-                    <p class="font-semibold mb-2">
-                        Subscribe to our newsletter
-                    </p>
-                    <a
-                        href="https://8414113d.sibforms.com/serve/MUIFANlIajRT3eeVps2E1KirBd01S_Po-HnJZBFrz5FpTZYdkEU0z05DPrnkWaKFHEBT_awTFWIcwHWk_vLFkp22xB6e1CG5UAsQCYDogmmBVa-jVvfEw1yk5NbgEKCjg5_g-JDe7AUzfjG37V1iIaAczDJ3zjEPG_jsn6GdC9-8wd8Vv0FZWBdhMWO8SM30RTtYEmDtw5S-LHly"
-                        target="_blank"
-                        rel="noopener"
-                        class="inline-block bg-[#cff245] text-black px-3 py-2 rounded-md hover:bg-[#bde132] transition"
-                    >
-                        Newsletter Form
-                    </a>
-                </div>
-            </div>
+        <script>
+            let currentMentorIndex = 0;
 
-            <div class="mt-12 text-center text-xs text-gray-500">
-                © Mently. All rights reserved.
-            </div>
-        </footer>
+            function renderMentor(mentor, index) {
+                const prevButton =
+                    index > 0
+                        ? `
+                    <button onclick="navigateMentor(${index - 1})" class="hover:underline transition duration-300 mr-4">
+                        ← Previous
+                    </button>`
+                        : "";
+                const nextButton =
+                    index < mentorsData.length - 1
+                        ? `
+                    <button onclick="navigateMentor(${index + 1})" class="hover:underline transition duration-300 ml-auto">
+                        Next →
+                    </button>`
+                        : "";
+
+                return `
+                    <div class="w-full max-w-4xl mx-auto py-12 px-8 md:px-12 bg-white rounded-3xl shadow-2xl mentor-card">
+                        <div class="flex justify-center mb-8">
+                            <img src="${mentor.image_url}" alt="${mentor.name}" class="mentor-image" />
+                        </div>
+                        <h4 class="text-3xl md:text-4xl font-bold mb-2 text-center">
+                            ${mentor.name}
+                        </h4>
+                        <p class="text-gray-300 mb-4 text-lg font-small text-center">
+                            ${mentor.title}
+                        </p>
+                        <p class="text-gray-600 mb-6 text-base max-w-3xl mx-auto text-center">
+                            ${mentor.bio}
+                        </p>
+                        <div class="text-left max-w-3xl mx-auto mb-6">
+                            <hr class="border-gray-300 mb-4" />
+                            <div class="flex flex-wrap justify-center gap-2">
+                                ${mentor.skills
+                                    .map(
+                                        (skill) => `
+                                    <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">
+                                        ${skill}
+                                    </span>`,
+                                    )
+                                    .join("")}
+                            </div>
+                        </div>
+                        <div class="flex justify-center social-links-container space-x-10 mb-10 text-2xl text-indigo-600">
+                            ${mentor.social_links
+                                .map(
+                                    (link) => `
+                                <a href="${link.url}" target="_blank" class="hover:text-gray-400 transition duration-300" aria-label="${link.aria_label}">
+                                    <i class="${link.icon}"></i>
+                                </a>`,
+                                )
+                                .join("")}
+                        </div>
+                        <div class="text-left max-w-3xl mx-auto mb-10">
+                            <h5 class="text-xl font-semibold mb-4 text-gray-900">
+                                Services & Pricing
+                            </h5>
+                            <form id="services-form-${mentor.id}" onchange="calculateTotal(${mentor.id})">
+                                <table class="w-full text-gray-700 border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-100">
+                                            <th class="px-4 py-2 border border-gray-200">Select</th>
+                                            <th class="px-4 py-2 border border-gray-200 text-left">Service</th>
+                                            <th class="px-4 py-2 border border-gray-200 text-left">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${mentor.services
+                                            .map(
+                                                (service) => `
+                                            <tr>
+                                                <td class="px-4 py-2 border border-gray-200 text-center">
+                                                    <input type="checkbox" name="prices" value="${service.price}" class="form-checkbox h-5 w-5 text-indigo-600" />
+                                                </td>
+                                                <td class="px-4 py-2 border border-gray-200">${service.name}</td>
+                                                <td class="px-4 py-2 border border-gray-200">$${service.price}/session</td>
+                                            </tr>`,
+                                            )
+                                            .join("")}
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div id="total-amount-${mentor.id}" class="mt-4 text-xl font-semibold text-indigo-700">
+                                Total: $0
+                            </div>
+                        </div>
+                        <div class="flex justify-center" style="gap: 2.5rem">
+                            <a href="https://buy.polar.sh/polar_cl_8SVOWQHoLACWT9osOZvYtKnCgbJXfN5yRfuIb0CyDUh" target="_blank">
+                            <button class="group relative inline-block h-16 w-full sm:w-48 bg-blue-900 rounded cursor-pointer">
+                                <div class="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300">
+                                    <div class="flex h-full w-full items-center justify-center bg-white border-2 border-blue-900 rounded">
+                                        <span class="text-base font-semibold uppercase text-blue-900">Request</span>
+                                    </div>
+                                </div>
+                            </button>
+                            <a href="${mentor.intro_link}" target="_blank">
+                                <button class="group relative inline-block h-16 w-full sm:w-48 bg-blue-900 rounded cursor-pointer">
+                                    <div class="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300">
+                                        <div class="flex h-full w-full items-center justify-center bg-white border-2 border-blue-900 rounded">
+                                            <span class="text-base font-semibold uppercase text-blue-900">Intro</span>
+                                        </div>
+                                    </div>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="flex mt-12 text-indigo-600 font-medium">
+                            ${prevButton}
+                            ${nextButton}
+                        </div>
+                    </div>
+                `;
+            }
+
+            function navigateMentor(index) {
+                currentMentorIndex = index;
+                const carousel = document.getElementById("mentor-carousel");
+                const newCard = renderMentor(
+                    mentorsData[currentMentorIndex],
+                    currentMentorIndex,
+                );
+                carousel.innerHTML = newCard;
+            }
+
+            function calculateTotal(mentorId) {
+                const form = document.getElementById(
+                    `services-form-${mentorId}`,
+                );
+                const checkboxes = form.querySelectorAll(
+                    'input[name="prices"]:checked',
+                );
+                let total = 0;
+                checkboxes.forEach((checkbox) => {
+                    total += parseFloat(checkbox.value);
+                });
+                document.getElementById(
+                    `total-amount-${mentorId}`,
+                ).textContent = `Total: $${total}`;
+            }
+
+            // Initialize with the first mentor
+            document.addEventListener("DOMContentLoaded", () => {
+                navigateMentor(0);
+            });
+        </script>
     </body>
 </html>

@@ -11,7 +11,8 @@ const mentorsData = [
       "HTML, CSS, Tailwind, Javascript, Emberjs",
       "Docker, Unix, Server Management",
     ],
-    intro_link: "https://google.com",
+    intro_link:
+      "https://www.loom.com/embed/2a742981490b4c649ce429d75f70fd73?sid=55df108f-5a3b-4ea7-9b29-01a57ec87929",
     services: [
       { name: "5 People Group Mentorship", price: "300" },
       { name: "1:1 Mentorship", price: "200" },

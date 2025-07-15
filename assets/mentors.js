@@ -155,16 +155,16 @@ const mentorsData = [
     services: [
       {
         name: "5 People Group Mentorship",
-        price: "40",
+        price: "70",
         billing_type: "hour",
       },
-      { name: "1:1 Mentorship", price: "25", billing_type: "hour" },
-      { name: "Doubt Clearing Session", price: "25", billing_type: "hour" },
-      { name: "Live Q&A Session", price: "25", billing_type: "hour" },
-      { name: "Live Coding Session", price: "25", billing_type: "hour" },
-      { name: "5 People Live Workshop", price: "25", billing_type: "hour" },
-      { name: "Live Code Review", price: "25", billing_type: "hour" },
-      { name: "Content Creation", price: "40", billing_type: "hour" },
+      { name: "1:1 Mentorship", price: "50", billing_type: "hour" },
+      { name: "Doubt Clearing Session", price: "50", billing_type: "hour" },
+      { name: "Live Q&A Session", price: "50", billing_type: "hour" },
+      { name: "Live Coding Session", price: "50", billing_type: "hour" },
+      { name: "5 People Live Workshop", price: "50", billing_type: "hour" },
+      { name: "Live Code Review", price: "50", billing_type: "hour" },
+      { name: "Content Creation", price: "70", billing_type: "hour" },
     ],
     social_links: [
       {

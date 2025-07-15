@@ -143,7 +143,7 @@ const mentorsData = [
     id: 1,
     name: "Ahmed Bashir",
     title: "Senior Software Engineer | Software Instructor",
-    bio: "I’m a Software Engineer and dedicated educator with over 5 years of experience building scalable, impactful solutions in Health-Tech and EdTech. As a Software Engineering Instructor at MasterSchool, I’ve mentored students from various backgrounds in Python, Flask, SQL, RestAPIs, and Test Automation. n my teaching career, I have taught a variety of courses, including Introduction to Programming, Object-Oriented Programming, Web Application Development, Mobile Computing, Visual Programming, Software Design and Architecture, and Data Science with Python.",
+    bio: "I’m a Software Engineer and dedicated educator with over 5 years of experience. I’ve mentored students from various backgrounds in Python, Flask, SQL, RestAPIs, and Test Automation. In my teaching career, I've taught a variety of courses, including Introduction to Programming, Object-Oriented Programming, Web Application Development, Mobile Computing, Visual Programming, Software Design and Architecture, and Data Science with Python.",
     image_url: "assets/images/mentors/AhmedBashir.png",
     intro_link:
       "https://www.loom.com/embed/86eea52a21844f0394aacb10e379ba6d?sid=0da76985-8fa7-4f0a-b1aa-ca0b7ecb8623",
@@ -301,7 +301,7 @@ const mentorsData = [
   {
     id: 4,
     name: "Rafi Ullah Shah",
-    title: "Senior Project Manager ",
+    title: "Senior Project Manager",
     bio: "With 14+ years in project delivery, I’ve led agile teams and complex projects in finance. I mentor others to build confidence, think strategically, and lead with purpose—sharing what’s worked, what hasn’t, and learning together.",
     image_url: "assets/images/mentors/rafi.png",
     intro_link:
